@@ -1,19 +1,24 @@
 name: fetch-assets
 
 # Downloads generated media (Higgsfield CDN) into the repo.
-# The Claude Code container's egress policy blocks the CDN, so this
-# runs on GitHub-hosted infra and commits the files to the branch.
+# The Claude Code container's egress policy blocks the CDN, so this runs
+# on GitHub-hosted infra and commits the files back to the branch.
+#
+# Trigger: push a change to assets/manifest.json (the integration token
+# cannot dispatch workflows, so a path-filtered push trigger is used).
 
 on:
-  workflow_dispatch:
-    inputs:
-      manifest:
-        description: 'JSON array of {"url": "...", "path": "..."} entries'
-        required: true
-        type: string
+  push:
+    paths:
+      - 'assets/manifest.json'
+  workflow_dispatch: {}
 
 permissions:
   contents: write
+
+concurrency:
+  group: fetch-assets-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   fetch:
@@ -23,17 +28,16 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
-      - name: Download assets
-        env:
-          MANIFEST: ${{ inputs.manifest }}
+      - name: Download assets from manifest
         run: |
-          echo "$MANIFEST" | jq -c '.[]' | while read -r item; do
+          jq -c '.[]' assets/manifest.json | while read -r item; do
             url=$(echo "$item" | jq -r .url)
             path=$(echo "$item" | jq -r .path)
             case "$path" in
               assets/*) ;;
               *) echo "refusing path outside assets/: $path"; exit 1 ;;
             esac
+            if [ -f "$path" ]; then echo "exists, skipping: $path"; continue; fi
             mkdir -p "$(dirname "$path")"
             echo "fetching $path"
             curl -fSL --retry 3 --max-time 300 -o "$path" "$url"
@@ -45,4 +49,5 @@ jobs:
           git config user.email "assets@hana-x.ai"
           git add -A assets/
           git commit -m "chore: add generated cinematic video assets" || { echo "nothing to commit"; exit 0; }
-          git push
+          git pull --rebase origin "${{ github.ref_name }}"
+          git push origin HEAD:"${{ github.ref_name }}"

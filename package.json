@@ -16,5 +16,8 @@
     "@fontsource/anton": "^5.2.7",
     "@fontsource/jetbrains-mono": "^5.2.8",
     "gsap": "^3.12.7"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.1"
   }
 }
