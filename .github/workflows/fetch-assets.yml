@@ -1,0 +1,48 @@
+name: fetch-assets
+
+# Downloads generated media (Higgsfield CDN) into the repo.
+# The Claude Code container's egress policy blocks the CDN, so this
+# runs on GitHub-hosted infra and commits the files to the branch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        description: 'JSON array of {"url": "...", "path": "..."} entries'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Download assets
+        env:
+          MANIFEST: ${{ inputs.manifest }}
+        run: |
+          echo "$MANIFEST" | jq -c '.[]' | while read -r item; do
+            url=$(echo "$item" | jq -r .url)
+            path=$(echo "$item" | jq -r .path)
+            case "$path" in
+              assets/*) ;;
+              *) echo "refusing path outside assets/: $path"; exit 1 ;;
+            esac
+            mkdir -p "$(dirname "$path")"
+            echo "fetching $path"
+            curl -fSL --retry 3 --max-time 300 -o "$path" "$url"
+          done
+
+      - name: Commit and push
+        run: |
+          git config user.name "hana-x-assets"
+          git config user.email "assets@hana-x.ai"
+          git add -A assets/
+          git commit -m "chore: add generated cinematic video assets" || { echo "nothing to commit"; exit 0; }
+          git push

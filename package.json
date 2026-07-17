@@ -1,0 +1,20 @@
+{
+  "name": "hana-x-corp-site",
+  "version": "1.0.0",
+  "description": "HANA-X // AGENTIC OS — cinematic 3D scroll website",
+  "scripts": {
+    "start": "node server.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://local_proxy@127.0.0.1:41729/git/hanax-ai/corp-site"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fontsource/anton": "^5.2.7",
+    "@fontsource/jetbrains-mono": "^5.2.8",
+    "gsap": "^3.12.7"
+  }
+}
