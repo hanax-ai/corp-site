@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HANA-X // AGENTIC OS</title>
+<meta name="description" content="Hana-X — the borderless agentic AI operating system. Context over vibes. Infrastructure built heavy, executed clean.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0a'/><text y='72' x='50' text-anchor='middle' font-size='60' fill='%2300ff00' font-family='monospace'>X</text></svg>">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ══════════ BOOT PRELOADER ══════════ -->
+<div id="preloader" aria-hidden="true">
+  <div class="boot mono">
+    <div class="boot-lines" id="bootLines"></div>
+    <div class="boot-bar"><span id="bootBarFill"></span></div>
+    <div class="boot-pct" id="bootPct">000%</div>
+  </div>
+</div>
+
+<!-- ══════════ FIXED HUD CHROME ══════════ -->
+<header class="hud" aria-label="System HUD">
+  <div class="hud-cell hud-tl">
+    <span class="hud-logo">HANA-X</span>
+    <span class="hud-dot" aria-hidden="true"></span>
+  </div>
+  <div class="hud-cell hud-tr mono">
+    <span class="hud-label">SYS.UPTIME</span>
+    <span id="uptime" class="hud-uptime">T+00:00:00.000</span>
+  </div>
+  <div class="hud-cell hud-bl mono">
+    <span id="scrollPct">SCROLL 000%</span>
+  </div>
+  <div class="hud-cell hud-br mono">
+    <span class="hud-status"><i class="pulse" aria-hidden="true"></i>SYS.ACTIVE</span>
+  </div>
+</header>
+
+<!-- custom cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+<main id="main">
+
+  <!-- ══════════ SECTION 1 — SCROLL-SCRUB HERO ══════════ -->
+  <section id="hero" aria-label="Hero cinematic">
+    <div class="hero-sticky">
+      <div class="hero-media" id="heroMedia">
+        <video id="heroVideo" poster="assets/poster/hero.jpg"
+               muted playsinline preload="auto" disablepictureinpicture>
+          <source src="assets/video/hero.webm" type="video/webm">
+          <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <canvas id="heroFallback" aria-hidden="true"></canvas>
+        <div class="hero-vignette" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+      </div>
+
+      <div class="hero-copy" id="heroCopy">
+        <p class="hero-eyebrow mono"><span class="tick">▸</span> INITIALIZING OPERATOR INTERFACE</p>
+        <h1 class="hero-h1">
+          <span class="h1-line"><span class="h1-inner">HANA-X</span></span>
+          <span class="h1-line"><span class="h1-inner accent">// AGENTIC OS</span></span>
+        </h1>
+        <p class="hero-sub mono">AUTONOMOUS EXECUTION &middot; LOCAL INFERENCE &middot; BORDERLESS INTERFACE</p>
+      </div>
+
+      <div class="hero-phase2 mono" id="heroPhase2">
+        <p>&gt; ENVIRONMENT SHIFT DETECTED</p>
+        <p>&gt; ROOFTOP → DATACENTER // CONTEXT PRESERVED</p>
+        <p class="accent">&gt; ALL SYSTEMS NOMINAL_</p>
+      </div>
+
+      <div class="hero-hint mono" id="heroHint">
+        <span>SCROLL TO INITIALIZE</span>
+        <span class="hint-arrow" aria-hidden="true">▼</span>
+      </div>
+
+      <div class="hero-timecode mono" id="heroTimecode" aria-hidden="true">FRAME 0000 / 00.00s</div>
+    </div>
+  </section>
+
+  <!-- ══════════ HORIZON MARQUEE ══════════ -->
+  <div class="marquee" data-speed="1" aria-hidden="true">
+    <div class="marquee-track">
+      <span>// SYSTEM: ACTIVE&nbsp;&nbsp;// CONTEXT_ENG_ENABLED&nbsp;&nbsp;// LOCAL_INFERENCE_ONLINE&nbsp;&nbsp;</span>
+      <span>// SYSTEM: ACTIVE&nbsp;&nbsp;// CONTEXT_ENG_ENABLED&nbsp;&nbsp;// LOCAL_INFERENCE_ONLINE&nbsp;&nbsp;</span>
+      <span>// SYSTEM: ACTIVE&nbsp;&nbsp;// CONTEXT_ENG_ENABLED&nbsp;&nbsp;// LOCAL_INFERENCE_ONLINE&nbsp;&nbsp;</span>
+      <span>// SYSTEM: ACTIVE&nbsp;&nbsp;// CONTEXT_ENG_ENABLED&nbsp;&nbsp;// LOCAL_INFERENCE_ONLINE&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ══════════ SECTION 2 — INTERACTIVE PILLAR GRID ══════════ -->
+  <section id="pillars" aria-label="Core capability modules">
+    <header class="section-head">
+      <p class="section-eyebrow mono">02 // CORE ENGINE LAYERS</p>
+      <h2 class="section-title">THE OPERATING<br>PILLARS</h2>
+      <p class="section-sub mono">HOVER TO SPIN UP MODULE PREVIEW — ZERO-LATENCY STATE TRANSITION</p>
+    </header>
+
+    <div class="pillar-grid" id="pillarGrid">
+
+      <article class="card" data-idx="0">
+        <div class="card-frame" aria-hidden="true"></div>
+        <div class="card-media">
+          <video poster="assets/poster/module-rag.jpg"
+                 loop muted playsinline preload="auto" disablepictureinpicture>
+            <source src="assets/video/module-rag.webm" type="video/webm">
+            <source src="assets/video/module-rag.mp4" type="video/mp4">
+          </video>
+          <div class="card-scan" aria-hidden="true"></div>
+        </div>
+        <div class="card-meta mono">
+          <span>MOD.01</span>
+          <span class="card-state" data-state>STANDBY</span>
+        </div>
+        <h3 class="card-title">AUTONOMOUS RAG<br>+ VECTOR DATA FLOW</h3>
+        <p class="card-desc">Self-orchestrating retrieval pipelines. Embeddings stream, rank and
+          re-ground themselves — the OS decides what it needs to know before you ask.</p>
+        <dl class="card-stats mono">
+          <div><dt>ENGINE LAYER</dt><dd>RETRIEVAL / MEMORY</dd></div>
+          <div><dt>IMPL. SPEED</dt><dd class="accent">12ms P50 RETRIEVAL</dd></div>
+        </dl>
+        <button class="deploy mono" type="button">
+          <span class="deploy-label">DEPLOY MODULE</span>
+          <span class="deploy-arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="deploy-log mono" aria-live="polite"></div>
+      </article>
+
+      <article class="card" data-idx="1">
+        <div class="card-frame" aria-hidden="true"></div>
+        <div class="card-media">
+          <video poster="assets/poster/module-infra.jpg"
+                 loop muted playsinline preload="auto" disablepictureinpicture>
+            <source src="assets/video/module-infra.webm" type="video/webm">
+            <source src="assets/video/module-infra.mp4" type="video/mp4">
+          </video>
+          <div class="card-scan" aria-hidden="true"></div>
+        </div>
+        <div class="card-meta mono">
+          <span>MOD.02</span>
+          <span class="card-state" data-state>STANDBY</span>
+        </div>
+        <h3 class="card-title">INFRA AUTOMATION<br>+ IDEMPOTENT EXECUTION</h3>
+        <p class="card-desc">Declarative machinery that locks into place. Run it once, run it a
+          thousand times — the result is byte-identical. Zero drift, zero ceremony.</p>
+        <dl class="card-stats mono">
+          <div><dt>ENGINE LAYER</dt><dd>EXECUTION / FABRIC</dd></div>
+          <div><dt>IMPL. SPEED</dt><dd class="accent">90s FULL-STACK PROVISION</dd></div>
+        </dl>
+        <button class="deploy mono" type="button">
+          <span class="deploy-label">DEPLOY MODULE</span>
+          <span class="deploy-arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="deploy-log mono" aria-live="polite"></div>
+      </article>
+
+      <article class="card" data-idx="2">
+        <div class="card-frame" aria-hidden="true"></div>
+        <div class="card-media">
+          <video poster="assets/poster/module-context.jpg"
+                 loop muted playsinline preload="auto" disablepictureinpicture>
+            <source src="assets/video/module-context.webm" type="video/webm">
+            <source src="assets/video/module-context.mp4" type="video/mp4">
+          </video>
+          <div class="card-scan" aria-hidden="true"></div>
+        </div>
+        <div class="card-meta mono">
+          <span>MOD.03</span>
+          <span class="card-state" data-state>STANDBY</span>
+        </div>
+        <h3 class="card-title">CONTEXT<br>ENGINEERING ENGINE</h3>
+        <p class="card-desc">A multi-layered matrix that assembles exactly the right context at
+          exactly the right moment. Not prompt magic — engineered signal.</p>
+        <dl class="card-stats mono">
+          <div><dt>ENGINE LAYER</dt><dd>COGNITION / CONTEXT</dd></div>
+          <div><dt>IMPL. SPEED</dt><dd class="accent">1M TOKENS / 300ms ASSEMBLY</dd></div>
+        </dl>
+        <button class="deploy mono" type="button">
+          <span class="deploy-label">DEPLOY MODULE</span>
+          <span class="deploy-arrow" aria-hidden="true">→</span>
+        </button>
+        <div class="deploy-log mono" aria-live="polite"></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ══════════ HORIZON MARQUEE (REVERSE) ══════════ -->
+  <div class="marquee" data-speed="-1" aria-hidden="true">
+    <div class="marquee-track">
+      <span>// SYSTEM: ACTIVE&nbsp;&nbsp;// CONTEXT_ENG_ENABLED&nbsp;&nbsp;// LOCAL_INFERENCE_ONLINE&nbsp;&nbsp;</span>
+      <span>// SYSTEM: ACTIVE&nbsp;&nbsp;// CONTEXT_ENG_ENABLED&nbsp;&nbsp;// LOCAL_INFERENCE_ONLINE&nbsp;&nbsp;</span>
+      <span>// SYSTEM: ACTIVE&nbsp;&nbsp;// CONTEXT_ENG_ENABLED&nbsp;&nbsp;// LOCAL_INFERENCE_ONLINE&nbsp;&nbsp;</span>
+      <span>// SYSTEM: ACTIVE&nbsp;&nbsp;// CONTEXT_ENG_ENABLED&nbsp;&nbsp;// LOCAL_INFERENCE_ONLINE&nbsp;&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- ══════════ SECTION 3 — THE MANIFESTO ══════════ -->
+  <section id="manifesto" aria-label="Manifesto">
+    <div class="manifesto-media" aria-hidden="true">
+      <video id="manifestoVideo" poster="assets/poster/macro.jpg"
+             loop muted playsinline preload="auto" disablepictureinpicture>
+        <source src="assets/video/macro.webm" type="video/webm">
+        <source src="assets/video/macro.mp4" type="video/mp4">
+      </video>
+      <div class="manifesto-tint"></div>
+    </div>
+    <div class="manifesto-copy">
+      <p class="section-eyebrow mono">03 // OPERATING DOCTRINE</p>
+      <blockquote class="manifesto-text" id="manifestoText">
+        <span class="m-line"><span class="m-inner">Context over vibes.</span></span>
+        <span class="m-line"><span class="m-inner">Infrastructure built heavy,</span></span>
+        <span class="m-line"><span class="m-inner">executed clean.</span></span>
+        <span class="m-line"><span class="m-inner accent">Welcome to the borderless</span></span>
+        <span class="m-line"><span class="m-inner accent">AI operating system.</span></span>
+      </blockquote>
+      <p class="manifesto-sig mono">— HANA-X CORE DOCTRINE v5.0</p>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="footer">
+    <div class="footer-row mono">
+      <span>HANA-X © 2026</span>
+      <span class="footer-status"><i class="pulse" aria-hidden="true"></i>ALL SYSTEMS NOMINAL</span>
+      <span>BUILT HEAVY. EXECUTED CLEAN.</span>
+    </div>
+  </footer>
+
+</main>
+
+<!-- grain + scanline overlays -->
+<div class="grain" aria-hidden="true"></div>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
