@@ -47,8 +47,11 @@
   <section id="hero" aria-label="Hero cinematic">
     <div class="hero-sticky">
       <div class="hero-media" id="heroMedia">
-        <video id="heroVideo" src="assets/video/hero.mp4" poster="assets/poster/hero.jpg"
-               muted playsinline preload="auto" disablepictureinpicture></video>
+        <video id="heroVideo" poster="assets/poster/hero.jpg"
+               muted playsinline preload="auto" disablepictureinpicture>
+          <source src="assets/video/hero.webm" type="video/webm">
+          <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
         <canvas id="heroFallback" aria-hidden="true"></canvas>
         <div class="hero-vignette" aria-hidden="true"></div>
         <div class="hero-grid" aria-hidden="true"></div>
@@ -101,8 +104,11 @@
       <article class="card" data-idx="0">
         <div class="card-frame" aria-hidden="true"></div>
         <div class="card-media">
-          <video src="assets/video/module-rag.mp4" poster="assets/poster/module-rag.jpg"
-                 loop muted playsinline preload="auto" disablepictureinpicture></video>
+          <video poster="assets/poster/module-rag.jpg"
+                 loop muted playsinline preload="auto" disablepictureinpicture>
+            <source src="assets/video/module-rag.webm" type="video/webm">
+            <source src="assets/video/module-rag.mp4" type="video/mp4">
+          </video>
           <div class="card-scan" aria-hidden="true"></div>
         </div>
         <div class="card-meta mono">
@@ -126,8 +132,11 @@
       <article class="card" data-idx="1">
         <div class="card-frame" aria-hidden="true"></div>
         <div class="card-media">
-          <video src="assets/video/module-infra.mp4" poster="assets/poster/module-infra.jpg"
-                 loop muted playsinline preload="auto" disablepictureinpicture></video>
+          <video poster="assets/poster/module-infra.jpg"
+                 loop muted playsinline preload="auto" disablepictureinpicture>
+            <source src="assets/video/module-infra.webm" type="video/webm">
+            <source src="assets/video/module-infra.mp4" type="video/mp4">
+          </video>
           <div class="card-scan" aria-hidden="true"></div>
         </div>
         <div class="card-meta mono">
@@ -151,8 +160,11 @@
       <article class="card" data-idx="2">
         <div class="card-frame" aria-hidden="true"></div>
         <div class="card-media">
-          <video src="assets/video/module-context.mp4" poster="assets/poster/module-context.jpg"
-                 loop muted playsinline preload="auto" disablepictureinpicture></video>
+          <video poster="assets/poster/module-context.jpg"
+                 loop muted playsinline preload="auto" disablepictureinpicture>
+            <source src="assets/video/module-context.webm" type="video/webm">
+            <source src="assets/video/module-context.mp4" type="video/mp4">
+          </video>
           <div class="card-scan" aria-hidden="true"></div>
         </div>
         <div class="card-meta mono">
@@ -189,8 +201,11 @@
   <!-- ══════════ SECTION 3 — THE MANIFESTO ══════════ -->
   <section id="manifesto" aria-label="Manifesto">
     <div class="manifesto-media" aria-hidden="true">
-      <video id="manifestoVideo" src="assets/video/macro.mp4" poster="assets/poster/macro.jpg"
-             loop muted playsinline preload="auto" disablepictureinpicture></video>
+      <video id="manifestoVideo" poster="assets/poster/macro.jpg"
+             loop muted playsinline preload="auto" disablepictureinpicture>
+        <source src="assets/video/macro.webm" type="video/webm">
+        <source src="assets/video/macro.mp4" type="video/mp4">
+      </video>
       <div class="manifesto-tint"></div>
     </div>
     <div class="manifesto-copy">

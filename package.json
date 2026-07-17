@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "HANA-X // AGENTIC OS — cinematic 3D scroll website",
   "scripts": {
-    "start": "node server.mjs"
+    "start": "node server.mjs",
+    "test": "node tests/smoke.mjs"
   },
   "repository": {
     "type": "git",

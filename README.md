@@ -31,7 +31,9 @@ vendored — the site is fully self-contained, no external requests at runtime.
 
 ## Visual assets
 
-Generated with Higgsfield MCP / Seedance 2.0 (1080p, silent):
+Generated with Higgsfield MCP / Seedance 2.0 (1080p, silent). Every clip ships
+as WebM/VP9 + MP4/H.264 dual sources; the hero is re-encoded all-keyframe
+(`-g 1`) so every scroll position seeks instantly:
 
 - `assets/video/hero.mp4` — 16:9 rooftop → data-center operator cinematic (scroll-scrubbed)
 - `assets/video/module-rag.mp4` — 1:1 RAG / vector-flow obsidian core loop

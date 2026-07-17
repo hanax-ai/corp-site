@@ -10,6 +10,19 @@ const FINE_POINTER = window.matchMedia('(hover: hover) and (pointer: fine)').mat
 const $ = (s, c = document) => c.querySelector(s);
 const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
+// Multi-<source> videos: when every source fails, the error fires on the
+// LAST <source> element (not the <video>). Cover both, plus a late probe.
+function onVideoFail(video, cb) {
+  let fired = false;
+  const fail = () => { if (!fired) { fired = true; cb(); } };
+  video.addEventListener('error', fail);
+  const sources = video.querySelectorAll('source');
+  if (sources.length) sources[sources.length - 1].addEventListener('error', fail);
+  setTimeout(() => {
+    if (video.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) fail();
+  }, 4000);
+}
+
 /* ═══════════ BOOT PRELOADER ═══════════ */
 
 const BOOT_LINES = [
@@ -117,9 +130,7 @@ heroVideo.addEventListener('loadedmetadata', () => {
   if (isFinite(heroVideo.duration) && heroVideo.duration > 0) heroDuration = heroVideo.duration;
   heroReady = true;
 });
-heroVideo.addEventListener('error', initHeroFallback);
-// belt & braces: if the file 404s some browsers only fire error on the <source>
-setTimeout(() => { if (heroVideo.readyState === 0 && !heroVideo.currentSrc) initHeroFallback(); }, 3000);
+onVideoFail(heroVideo, initHeroFallback);
 
 ScrollTrigger.create({
   trigger: '#hero',
@@ -246,7 +257,7 @@ $$('.card').forEach(card => {
   let deployed = false;
   let videoOk = true;
 
-  video.addEventListener('error', () => { videoOk = false; });
+  onVideoFail(video, () => { videoOk = false; });
 
   // Zero-latency hover-to-play: decoder pre-warmed by priming pass below
   const play = () => {
@@ -313,11 +324,12 @@ $$('.card').forEach(card => {
   }
 });
 
-// Prime every module video once after boot so first hover starts instantly
+// Prime every module video once after boot so first hover starts instantly.
+// Parked on a mid-clip frame so idle cards show the model, not a black lead-in.
 document.addEventListener('hana:booted', () => {
   $$('.card video').forEach(v => {
     const p = v.play();
-    if (p) p.then(() => { v.pause(); v.currentTime = 0; }).catch(() => {});
+    if (p) p.then(() => { v.pause(); v.currentTime = 2; }).catch(() => {});
   });
 }, { once: true });
 
